@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Concert Play</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="//fonts.googleapis.com/css?family=Domine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <style>
+      body {
+        font-family: 'Domine', serif;
+      }
+
+      h1 {
+        font-family: 'Audiowide', serif;
+        color: #e4e4e6;;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .search-button {
+        margin-right: 10px
+      }
+
+      .concert-date {
+        font-weight: bold;
+      }
+
+      .iframe-container {
+        text-align: center
+      }
+
+    </style>
+  </head>
+  <body>
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <h1>Concert Play</h1>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 search-form"  method="get" action="{% url 'get_concerts' %}">
+      {% csrf_token %}
+      <input name="city" class="form-control mr-sm-2 search-form city-query" type="search" placeholder="Search city..." >
+      <button class="btn my-2 my-sm-0 search-button" type="submit">Search</button>
+      <button class="btn my-2 my-sm-0 create-playlist">Create Spotify Playlist</button>
+    </form>
+  </nav>
+  <br/>
+  <br/>
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <ul class="artist-list list-group">
+        </ul>
+      </div>
+      <div class="col iframe-container">
+        <iframe width="500" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
